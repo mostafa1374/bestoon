@@ -8,3 +8,14 @@ class Expense(models.Model):
     date = models.DateTimeField()
     amount = models.BigIntegerField()
     user = models.ForeignKey(User, on_delete=None)
+    def __unicode__(self):
+        return str(self.date) + "-" + str( self.user) + "-" + str(self.amount)
+
+
+class Income(models.Model):
+    text = models.CharField(max_length=255)
+    date = models.DateTimeField()
+    amount = models.BigIntegerField()
+    user = models.ForeignKey(User, on_delete=None)
+    def __unicode__(self):
+        return "{}-{}".format(self.date, self.amount)
